@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Actualizar el título al hacer clic en el fondo</title>
+<script>
+var clicks = 0;
+
+function updateTitle() {
+clicks++;
+document.title = "Clicks totales: " + clicks;
+}
+</script>
+<style>
+body {
+background-color: lightblue;
+height: 100vh;
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+</style>
+</head>
+<body onclick="updateTitle()">
+<h1>Por favor, haga clic en el fondo</h1>
+</body>
+</html>
