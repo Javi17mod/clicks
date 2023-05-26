@@ -1,27 +1,45 @@
-<!DOCTYPE html>
 <html>
 <head>
-<title>Actualizar el título al hacer clic en el fondo</title>
+<meta charset="UTF-8">
+<title>Clicker</title>
 <script>
-var clicks = 0;
-
-function updateTitle() {
+function onClick() {
+var clicks = parseInt(getCookie("clicks")) || 0;
 clicks++;
-document.title = "Clicks totales: " + clicks;
+setCookie("clicks", clicks);
+document.title = "Clicks: " + clicks;
+}
+
+function setCookie(name, value) {
+document.cookie = name + "=" + value + "; path=/";
+}
+
+function getCookie(name) {
+var cookies = document.cookie.split("; ");
+for (var i = 0; i < cookies.length; i++) {
+var cookie = cookies[i].split("=");
+if (cookie[0] === name) {
+return cookie[1];
+}
+}
+return null;
 }
 </script>
 <style>
 body {
-background-color: lightblue;
+background-color: #03A8FF;
 height: 100vh;
-margin: 0;
 display: flex;
 justify-content: center;
 align-items: center;
 }
+
+h1 {
+font-size: 3rem;
+}
 </style>
 </head>
-<body onclick="updateTitle()">
-<h1>Por favor, haga clic en el fondo</h1>
+<body onclick="onClick()">
+<h1>Click anywhere!</h1>
 </body>
 </html>
